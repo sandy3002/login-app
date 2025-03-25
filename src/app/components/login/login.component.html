@@ -1,0 +1,14 @@
+<main>
+    <div class="login">
+        <p>Login with your credentials</p>
+        <form (ngSubmit) = "onFormSubmit(f)" #f="ngForm">
+            <input ngModel
+                type="email" name="email" id="email" placeholder="admin@gmail.com">
+
+            <input ngModel
+                type="password" name="password" id="password" placeholder="password">
+
+            <button (click)="sendUpdate()" type="submit">Submit</button>
+        </form>
+    </div>
+</main>
