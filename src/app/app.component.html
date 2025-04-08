@@ -1,10 +1,4 @@
 <app-header />
 
 
-
-@if (!loginSuccessful) {
-    <app-login (messageEvent)="handleUpdate($event)" />
-}
-@else {
-    <app-dashboard />
-}
+<app-home />

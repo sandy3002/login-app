@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, signal, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,9 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  // @Input() messageLogin : string = ''
+
   @ViewChild('f') myForm = NgForm;
   
   f ={
@@ -15,21 +18,40 @@ export class LoginComponent {
     password : "",
   }
 
-  loginSuccessful = "false"
+  
   onFormSubmit(f:any){
     console.log(f.value)
-    if(f.value.email === "admin@gmail.com" && f.value.password === "password"){
-      this.loginSuccessful = "true"
-      alert("Login Successful!")
+    // if(f.value.email === "admin@gmail.com" && f.value.password === "password"){
+    //   alert("Login Successful!")
+    // }
+    // else
+    //   alert("Wrong Credentials!")
+
+    let email1 = f.value.email
+    let password1 = f.value.password
+    console.log(email1);
+    let password2 = localStorage.getItem(email1.email);
+
+    if(password1.password == password2){
+      alert("Login Successful!") 
+      window.open('dashboard')
     }
     else
       alert("Wrong Credentials!")
+
+
   }
 
-  @Output() messageEvent = new EventEmitter<string>();  
-  
-  sendUpdate() {  
-    this.messageEvent.emit(this.loginSuccessful); 
-  }
+  // -----Sharing data to parent using event emitter
+
+  // @Output() messageEvent = new EventEmitter<boolean>();
+
+  // sendUpdate(){
+  //   if(this.loginSuccessful == "true")
+  //     this.messageEvent.emit(true)
+  //   else
+  //     this.messageEvent.emit(false)
+
+  // }
 
 }

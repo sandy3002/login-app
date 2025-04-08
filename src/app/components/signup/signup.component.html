@@ -1,8 +1,10 @@
 <main>
     <div class="login">
 
-        <p>Login with your credentials</p>
+        <p>Sign up with your details</p>
         <form (ngSubmit) = "onFormSubmit(f)" #f="ngForm">
+            <input ngModel
+                type="text" name="fullname" id="fullname" placeholder="John Doe">
             <input ngModel
                 type="email" name="email" id="email" placeholder="admin@gmail.com">
 
